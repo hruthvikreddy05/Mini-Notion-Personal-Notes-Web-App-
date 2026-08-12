@@ -108,3 +108,22 @@ def delete_note(note_id):
 if __name__ == "__main__":
     init_db()
     app.run(debug=True, port=5000)
+
+
+Base HTML
+{% extends "base.html" %}
+{% block title %}Mini Notion — All Notes{% endblock %}
+{% block content %}
+<div class="search-bar">
+    <form method="get" action="{{ url_for('index') }}">
+        <input type="text" name="q" placeholder="Search notes..." value="{{ query }}" />
+        <button type="submit" class="btn">Search</button>
+        {% if query %}
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">Clear</a>
+        {% endif %}
+
+
+    </form>
+</div>
+
+
